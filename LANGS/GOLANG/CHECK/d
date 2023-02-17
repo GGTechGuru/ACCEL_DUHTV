@@ -1,0 +1,24 @@
+
+func updateBlackoutInDb(id string, blackout Blackout) {
+    update_prepared :=fmt.Sprintf(`
+UPDATE BLACKOUTS STARTS_UTC=%s, ENDS_UTC=%s, PROGRAM_ID=%s, REGION_ID=%s
+WHERE ID=%s;`, blackout.STARTS_UTC, blackout.ENDS_UTC, blackout.PROGRAM_ID, blackout.REGION_ID, id
+`
+
+    db, err := sql.Open("sqlite3", sqliteDb)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer db.Close()
+
+    query, err := db.Prepare(update_prepared)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    _,err = query.Exec(update_prepared)
+    if err != nil {
+        log.Fatal(err)
+    }
+}
+

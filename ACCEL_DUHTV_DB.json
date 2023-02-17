@@ -1,0 +1,357 @@
+{
+    
+    "TABLE_SCHEMAS": {
+        
+        "ACCOUNTS": {
+        
+            "CONTACT_INFO_ID":	{ "STRING": { "SOURCE_DATA": { "CONTACT_INFO": "ID" } } },
+        
+            "ACCOUNT_TYPE":	{ "STRING": { "CHOICES": [ "ADVERTISER", "DISTRIBUTOR", "SUBSCRIBER", "VENDOR" ] } },
+        
+            "ACCOUNT_NUMBER":	"STRING",
+        
+            "BALANCE_DUE":	"NUMBER",
+        
+            "ENTRY_UPDATED_UTC":	"LONG",
+            "UPDATED_BY_ID":	{ "STRING": { "SOURCE_DATA": { "USERS": "ID" } } },
+        
+            "ID":		"STRING"
+        },
+        
+        
+        "ADVERTISEMENTS": {
+        
+            "DURATION_MS":	"INTEGER",
+        
+            "RATING_ID":	{ "STRING": { "SOURCE_DATA": { "RATING_CODES": "ID" } } },
+        
+            "ADVERTISER_ID": { "STRING": { "SOURCE_DATA": { "ADVERTISERS": "ID" } } },
+        
+            "ID":		"STRING"
+        },
+        
+        
+        "RATING_CODES": {
+            "ID":		"STRING",
+            "RATING_CODE":	"STRING",
+            "MINIMUM_AGE":	"INTEGER",
+            "DESCRIPTION":	"STRING"
+        },
+        
+        
+        "ADVERTISERS": {
+        
+            "TITLE":		"STRING",
+        
+            "CONTACT_INFO_ID":	{"STRING": { "SOURCE_DATA": { "CONTACT_INFO": "ID" }  } },
+        
+            "ID":		"STRING"
+        },
+        
+        "AGGREGATE_ADVERTISING_HISTORY": {
+        
+            "ADVERTISEMENT_ID":		{ "STRING": { "SOURCE_DATA": { "ADVERTISEMENTS": "ID" } } },
+        
+            "LIVE_DURATION":		"INTEGER",
+        
+            "RECORDED_DURATION":	"INTEGER",
+        
+            "ENTRY_UPDATED_UTC":	"LONG",
+            "UPDATED_BY_ID":		{ "STRING": { "SOURCE_DATA": { "USERS": "ID" } } },
+        
+            "ID":			"STRING"
+        },
+        
+        "AGGREGATE_VIEWING_HISTORY": {
+            "PROGRAM_ID":		"STRING",
+
+            "PROGRAM_TOTAL_DURATION":	"INTEGER",
+        
+            "ENTRY_UPDATED_UTC":	"LONG",
+            "UPDATED_BY_ID":		{ "STRING": { "SOURCE_DATA": { "USERS": "ID" } } },
+        
+            "ID":			"STRING"
+        },
+        
+        "BLACKOUTS": {
+            "ENDS_UTC":		"LONG",
+            "STARTS_UTC":	"LONG",
+            "PROGRAM_ID":	{ "STRING": { "SOURCE_DATA": { "PROGRAMMING": "ID" } } },
+            "REGION_ID":	"STRING",
+            "ID":		"STRING"
+        },
+        
+        "CHANGE_LOGS": {
+        
+            "UPDATED_ON_UTC":		"LONG",
+        
+            "UPDATED_BY_ID":		{ "STRING": { "SOURCE_DATA": { "USERS": "ID" } } },
+        
+            "UPDATED_TABLE":		"STRING",
+        
+            "UPDATED_ACTION":		{ "STRING" : { "CHOICES": [ "INSERT", "DELETE", "CHANGE" ] } },
+        
+            "ID":			"STRING"
+        },
+        
+        "CHRONOLOGICAL_VIEWING_HISTORY": {
+            "DATE_UTC":			"LONG",
+
+            "PROGRAM_ID":		"STRING",
+
+            "VIEWING_DURATION":		"INTEGER",
+        
+            "ENTRY_UPDATED_UTC":	"LONG",
+            "UPDATED_BY_ID":		{ "STRING": { "SOURCE_DATA": { "USERS": "ID" } } },
+        
+            "ID":			"STRING"
+        },
+        
+        "CONTACT_INFO":	{
+            "CITY_ABP":	"STRING",
+            "STATE_TERRITORY_PROVINCE":	"STRING",
+            "STREET_1":	"STRING",
+            "STREET_2":	"STRING",
+            "STREET_3":	"STRING",
+            "ZIP_PIN":	"STRING",
+        
+            "EMAIL":		"STRING",
+            "FAX":		{ "STRING":	"OPTIONAL" },
+            "PHONE_1":		"STRING",
+            "PHONE_1_TYPE":	"STRING",
+            "PHONE_2":		"STRING",
+            "PHONE_2_TYPE":	"STRING",
+            "WEBSITE":		{ "STRING":	"OPTIONAL" },
+        
+            "ID":		"STRING"
+        },
+        
+        "DEVICES": {
+            "TYPE":		"STRING",
+            "SERIAL_NO":	"STRING",
+            "ID":		"STRING"
+        },
+        
+        "PAYMENT_SYSTEMS": {
+            "CHECKING_ACCOUNT_ID": "STRING",
+            "CREDIT_CARD_ID":	"STRING",
+            "PAYPAL_ID":	"STRING",
+            "TYPE_CODE": { "STRING": { "CHOICES": ["CREDIT_CARD", "CHECKING", "PAYPAL"] } },
+            "ID":		"STRING"
+        },
+        
+        "PROGRAM_SOURCES": {
+            "CONTACT_EMAIL":	"STRING",
+            "CONTACT_FAX":	"STRING",
+            "CONTACT_PHONE":	"STRING",
+            "CONTACT_TITLE":	"STRING",
+            "PROGRAM_ID": 	{ "STRING": { "SOURCE_DATA": { "PROGRAM_CONTENT": "ID" } } },
+            "ID":		"STRING"
+        },
+        
+        "PROGRAM_CONTENT": {
+            "PROGRAM_SOURCE_ID":	{ "STRING":	{ "SOURCE_DATA": { "PROGRAM_SOURCES": "ID" } } },
+            "TITLE":		"STRING",
+            "CATEGORY_CODE":	"STRING",
+            "GENRE":		{ "STRING": "OPTIONAL" },
+            "DURATION_MS":	"INTEGER",
+            "RATING_CODE":	"STRING",
+            "ID":		"STRING"
+        },
+        
+        "PROGRAMMING": {
+            "STARTS_UTC":		"LONG",
+            "ENDS_UTC":			"LONG",
+            "CONTENT_ID":		{ "STRING":	{ "SOURCE_DATA": { "PROGRAM_CONTENT": "ID" } } },
+            "TRANSPORT_ID":		{ "STRING": { "SOURCE_DATA": { "TRANSPORTS": "ID" } } },
+            "ID":			"STRING"
+        },
+        
+        
+        "REGIONS": {
+            "CITY":		"STRING",
+            "HOUSEHOLD_MEDIAN_INCOME":		"INTEGER",
+            "HOUSEHOLD_COUNT":			"INTEGER",
+            "STATE":		"STRING",
+            "ZIP":		"STRING",
+        
+            "ID":		"STRING"
+        },
+        
+        
+        
+        "SATELLITE_DEVICES": {
+        
+            "CUSTOMER_ID":	{ "STRING":	{ "CONTACT_INFO":	"ID" } },
+        
+            "DEVICE_ID":	{ "STRING":	{ "DEVICES":	"ID" } },
+        
+            "ID":	"STRING"
+        },
+        
+        
+        "PAYMENT_SYSTEMS": {
+            "DESCRIPTION":	"STRING",
+            "SYSTEM_TYPE":	{ "STRING": { "CHOICES": ["CHECKING", "CREDIT_CARD", "DEBIT_CARD", "MAIL", "PAYPAL", "ZELLE" ] } },
+        
+            "ID":		"STRING"
+        },
+        
+        
+        "SATELLITES": {
+            "CONTRACT_ID":  { "STRING": { "SOURCE_DATA": { "SATELLITE_CONTRACTS": "ID" } } },
+        
+            "CONTACT_ID":	{ "STRING": { "SOURCE_DATA": { "CONTACT_INFO": "ID" } } },
+        
+            "ORBIT_ID":	"STRING",
+        
+            "COVERAGE_ID":	{ "STRING": { "SATELLITE_COVERAGE": "ID" } },
+        
+            "ID":	"STRING"
+        },
+        
+        
+        "SATELLITE_CONTRACTS": {
+            "ID":		"STRING",
+        
+            "TEXT":		"STRING",
+        
+            "ACCOUNT_ID":	{ "STRING": { "SOURCE_DATA": { "ACCOUNTS": "ID" } } }
+        },
+        
+        
+        "SATELLITE_COVERAGE": {
+            "COMMENT": "Which satellites cover which regions.",
+        
+            "SATELLITE_ID":	{ "STRING":	{ "SOURCE_DATA":	{ "SATELLITES": "ID" } } },
+            "REGION_ID":	{ "STRING":	{ "SOURCE_DATA":	{ "REGIONS": "ID" } } },
+        
+            "ID":		"STRING"
+        },
+        
+        "SUBSCRIBERS": {
+            "COMMENT": "This table may be redundant to tables SUBSCRIPTIONS + CONTACT_INFO.",
+        
+            "CONTACT_ID":	{ "STRING" : { "SOURCE_DATA": { "CONTACT_INFO": "ID" } } },
+            "ID":	"STRING"
+        },
+        
+        "SUBSCRIPTIONS": {
+            "COMMENT": "Subscription information.",
+        
+            "ACCOUNT_NUMBER":		{ "STRING" : { "SOURCE_DATA": { "ACCOUNTS": "ID" } } },
+            "ACCOUNT_OPEN_DATE_UTC":	"LONG",
+            "ACCOUNT_STATUS":		{ "STRING": { "CHOICES": [ "CURRENT", "CLOSED", "SUSPENDED" ] } },
+        
+            "PAYMENT_FREQUENCY": { "STRING": { "CHOICES": [ "ANNUAL", "QUARTERLY", "MONTHLY" ] } },
+            "PAYMENT_FREQUENCY": { "STRING": { "CHOICES": [ "BILLING", "AUTOPAY" ] } },
+            "PAYMENT_SYSTEM_ID": { "STRING": { "SOURCE_DATA": { "PAYMENT_SYSTEMS": "ID" } } },
+            "SUBSCRIBER_ID":	 { "STRING": { "SOURCE_DATA": { "SUBSCRIBERS": "ID" } } },
+        
+            "ID":		"STRING"
+        
+        },
+        
+        
+        "SETUP_INSTRUCTIONS" : {
+            "COMMENT": "INFO ON HOW TO SET UP DEVICES, PROGRAMMING FEEDS, ETC.",
+        
+            "UPDATED_ON_UTC":	"LONG",
+
+            "UPDATED_BY_ID":		{ "STRING": { "SOURCE_DATA": { "USERS": "ID" } } },
+
+            "HOWTO":		"TEXT",
+        
+            "ID":		"STRING"
+        },
+        
+        
+       "SUBSCRIBER_ADVERTISEMENT_VIEWING": {
+            "Comment":			"Track when & how much which subscribers view which advertisements",
+        
+            "SUBSCRIBER_ID": 		{ "STRING": { "SOURCE_DATA": { "SUBSCRIBERS": "ID" } } },
+        
+            "ADVERTISEMENT_ID":		{ "STRING": { "SOURCE_DATA": { "ADVERTISEMENTS": "ID" } } },
+        
+            "VIEW_START_UTC":		"LONG",
+            "VIEW_END_UTC":		"LONG",
+        
+        
+            "VIEW_TYPE":		{ "STRING": { "CHOICES": [ "LIVE", "RECORDED" ] } },
+        
+            "ID":			"STRING"
+        
+        },
+        
+        
+        "SUBSCRIBER_PROGRAM_VIEWING": {
+            "Comment":			"Track when & how much which subscribers view which programs",
+        
+            "SUBSCRIBER_ID": 		{ "STRING": { "SOURCE_DATA": { "SUBSCRIBERS": "ID" } } },
+        
+            "PROGRAM_ID":		{ "STRING": { "SOURCE_DATA": { "PROGRAMS": "ID" } } },
+        
+            "VIEW_START_UTC":		"LONG",
+            "VIEW_END_UTC":		"LONG",
+        
+            "VIEW_TYPE":		{ "STRING": { "CHOICES": [ "LIVE", "RECORDED" ] } },
+        
+            "ID":			"STRING"
+        },
+        
+        
+        "TRANSPORTS": {		
+            "Comment": "How content gets from the distributors",
+        
+            "Description":	"STRING",
+            "TYPE_CODE":	"STRING",
+            "SETUP_INSTRUCTIONS_ID":		{ "STRING": { "SOURCE_DATA": { "SETUP_INSTRUCTIONS": "ID" } } },
+            "TROUBLE_SHOOTING_ID":		{ "STRING": { "SOURCE_DATA": { "TROUBLE_SHOOTING": "ID" } } },
+            "CONTACT_ID":	{ "STRING": { "SOURCE_DATA": { "CONTACT_INFO": "ID" } } },
+            "ID":		"STRING"
+        },
+        
+        
+        
+        "TROUBLE_SHOOTING" : {
+            "Comment":		"Trouble shoot devices, connections.",
+        
+            "ID":		"STRING",
+            "UPDATED_ON_UTC":	"LONG",
+            "UPDATED_BY_ID":		{ "STRING": { "SOURCE_DATA": { "USERS": "ID" } } },
+
+            "HOWTO":		"TEXT"
+        },
+        
+        "LOGIN_FAILS": {
+            "Comment":		"Unsuccessful login attempts.",
+        
+            "LOGIN_ID":		"STRING",
+            "TIME_UTC":		"LONG",
+            "FAIL_REASON":	{ "STRING":	{ "CHOICES":	[ "WRONG_ID", "EXPIRED_ID", "WRONG_PASS" ] } },
+            "ID":		"STRING"
+        },
+        
+        "LOGIN_SUCCESSES": {
+            "Comment":		"Successful logins. Track session start & end.",
+        
+            "USER_ID":		{ "STRING": { "SOURCE_DATA": { "USERS": "ID" } } },
+            "START_UTC":	"LONG",
+            "END_UTC":		"LONG",
+            
+            "ID":		"STRING"
+        },
+        
+        "USERS": {
+            "Comment":			"Users with current or previous login access to this software",
+        
+            "LOGIN_ID":			"STRING",
+            "ENCRYPTED_PASSWORD":	"STRING",
+            "CONTACT_ID":		{ "STRING": { "SOURCE_DATA":	{ "CONTACT_INFO": "ID" } } },
+            "ADMIN_LEVEL":		{ "STRING": { "CHOICES": [ "ADMIN", "USER" ] } },
+            "ID":			"STRING"
+        }
+        
+    }
+    
+}
